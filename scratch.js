@@ -26,8 +26,7 @@
 					'green',
 					'blue',
 					'purple'
-				],
-				stops: [ 0, 0.1, 0.3, 0.5, 0.7, 0.9]
+				]
 			}
 		};
 
@@ -35,7 +34,7 @@
 			var scale = (Math.random() * (1.5 - 0.6)) + 0.6;
 			var angle = Math.random() * 360;
 			
-			var radius = Math.min(sheet.width, sheet.height) / 2.5;
+			var radius = Math.min(sheet.width, sheet.height) / 2;
 			var x = (Math.random() * ((sheet.width - radius) - radius)) + radius;
 			var y = (Math.random() * ((sheet.height - radius) - radius)) + radius;
 			var strength = Math.random() * 100;
@@ -43,12 +42,17 @@
 			var gradient = new TG.LinearGradient().interpolation(2);
 			// Start the gradient at a random color for more variety
 			var startColor = Math.floor(Math.random() * (sheet.bg.colors.length - 1));
+			var distanceBetween = 1 / (sheet.bg.colors.length - 1);
 			for (var i = 0; i < sheet.bg.colors.length; i++) {
 				var index = startColor + i;
 				if (index >= sheet.bg.colors.length) {
 					index -= sheet.bg.colors.length;
 				}
-				gradient.point(sheet.bg.stops[i], TGUtil.getColor(sheet.bg.colors[index]));
+				var stop = 0;
+				if (i > 0) {
+					stop = i * distanceBetween - (distanceBetween / 2);
+				} 
+				gradient.point(stop, TGUtil.getColor(sheet.bg.colors[index]));
 			}
 			// Make the last color in the gradient the same as the first color so that it loops nicely
 			gradient.point(1, TGUtil.getColor(sheet.bg.colors[startColor]));

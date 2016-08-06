@@ -27,16 +27,17 @@
 					'blue',
 					'purple'
 				],
-				stops: [ 0, 0.15, 0.25, 0.4, 0.6, 0.75]
+				stops: [ 0, 0.1, 0.3, 0.5, 0.7, 0.9]
 			}
 		};
 
 		var drawBackground = function() {
-			var x = sheet.width / 2;
-			var y = sheet.height / 2;
-			var radius = Math.min(sheet.width, sheet.height) / 2;
-			var angle = Math.random() * 360;
 			var scale = (Math.random() * (1.5 - 0.6)) + 0.6;
+			var angle = Math.random() * 360;
+			
+			var radius = Math.min(sheet.width, sheet.height) / 2.5;
+			var x = (Math.random() * ((sheet.width - radius) - radius)) + radius;
+			var y = (Math.random() * ((sheet.height - radius) - radius)) + radius;
 			var strength = Math.random() * 100;
 
 			var gradient = new TG.LinearGradient().interpolation(2);

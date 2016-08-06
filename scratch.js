@@ -26,18 +26,26 @@
 					'green',
 					'blue',
 					'purple'
-				]
+				],
+				scale: {
+					min: 0.6,
+					max: 1.5
+				},
+				twistStrength: {
+					min: 0,
+					max: 100
+				}
 			}
 		};
 
 		var drawBackground = function() {
-			var scale = (Math.random() * (1.5 - 0.6)) + 0.6;
+			var scale = (Math.random() * (sheet.bg.scale.max - sheet.bg.scale.min)) + sheet.bg.scale.min;
 			var angle = Math.random() * 360;
 			
 			var radius = Math.min(sheet.width, sheet.height) / 2;
 			var x = (Math.random() * ((sheet.width - radius) - radius)) + radius;
 			var y = (Math.random() * ((sheet.height - radius) - radius)) + radius;
-			var strength = Math.random() * 100;
+			var strength = (Math.random() * (sheet.bg.twistStrength.max - sheet.bg.twistStrength.min)) + sheet.bg.twistStrength.min;
 
 			var gradient = new TG.LinearGradient().interpolation(2);
 			// Start the gradient at a random color for more variety

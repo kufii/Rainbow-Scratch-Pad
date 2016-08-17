@@ -9,19 +9,14 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="/css/index.css">
 	<script src="https://code.jquery.com/pep/0.4.1/pep.js"></script>
+	<script src="http://localhost:35729/livereload.js?snipver=1"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/mithril/0.2.5/mithril.min.js"></script>
-	<script src="/js/module-loader.js"></script>
-	<script src="/js/index.js"></script>
+	<script src="js/module-loader.js"></script>
+	<script src="js/index.js"></script>
 </head>
 
 <body>
 	<div id="app"></div>
 	<img src="/img/loader.svg" alt="page is loading" class="loader">
-	<script>
-		/* jshint ignore:start */
-		document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
-		':35729/livereload.js?snipver=1"></' + 'script>');
-		/* jshint ignore:end */
-	</script>
 </body>
 </html>

@@ -66,9 +66,9 @@
 	// start module load
 	app.loadModules({
 		// EXTRA
-		'/js/lib/': ['util', 'TexGen'],
-		'/js/lib/rainbow/': ['sheet', 'input', 'texgen-util'],
+		'js/lib/': ['util', 'TexGen'],
+		'js/lib/rainbow/': ['sheet', 'input', 'texgen-util'],
 		// COMPONENTS
-		'/js/components/': ['rainbow-scratch-pad']
+		'js/components/': ['rainbow-scratch-pad']
 	}, app.loadRoutes);
 }());

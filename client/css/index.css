@@ -61,7 +61,7 @@ a {
 ** App Styles
 **/
 
-html, body {
+html, body, .app, .layout, .content {
 	height: 100%;
 	margin: 0;
 }

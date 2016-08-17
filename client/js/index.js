@@ -1,5 +1,5 @@
-/* global app m util */
 (function() {
+	'use strict';
 
 	app.shared = {
 		// put shared app vars in here
@@ -7,14 +7,12 @@
 
 	// mounts app
 	app.mountRoot = function() {
-
 		var cmp = app.cmp;
 
 		var mountElem = util.q('#app');
 
 		// define application routes here
 		m.mount(mountElem, cmp.RainbowScratchPad);
-
 	};
 
 	/**
@@ -28,8 +26,11 @@
 
 	// start module load
 	app.loadModules({
+		// VENDOR
+		'https://code.jquery.com/pep/0.4.1/': ['pep'],
+		'js/lib/vendor/': ['TexGen'],
 		// EXTRA
-		'js/lib/': ['util', 'TexGen'],
+		'js/lib/': ['util'],
 		'js/lib/rainbow/': ['sheet', 'input', 'texgen-util'],
 		// COMPONENTS
 		'js/components/': ['rainbow-scratch-pad']

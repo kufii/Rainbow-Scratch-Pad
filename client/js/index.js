@@ -37,20 +37,14 @@
 	 **/
 
 	// loads routes and mounts app
-	app.loadRoutes = function() {
+	app.mountRoot = function() {
 
 		var cmp = app.cmp;
 
 		var mountElem = util.q('#app');
-		var defaultRoute = '/';
-
-		// mode for routing ('hash', 'pathname', 'query')
-		m.route.mode = 'pathname';
 
 		// define application routes here
-		m.route(mountElem, defaultRoute, {
-			'/': l('Rainbow Scratch Pad', cmp.RainbowScratchPad)
-		});
+		m.mount(mountElem, l('Rainbow Scratch Pad', cmp.RainbowScratchPad));
 
 	};
 
@@ -70,5 +64,5 @@
 		'js/lib/rainbow/': ['sheet', 'input', 'texgen-util'],
 		// COMPONENTS
 		'js/components/': ['rainbow-scratch-pad']
-	}, app.loadRoutes);
+	}, app.mountRoot);
 }());

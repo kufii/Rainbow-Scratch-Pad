@@ -44,26 +44,8 @@
 			var y = (Math.random() * ((sheet.height - radius) - radius)) + radius;
 			var strength = (Math.random() * (sheet.bg.twistStrength.max - sheet.bg.twistStrength.min)) + sheet.bg.twistStrength.min;
 
-			var gradient = new TG.LinearGradient().interpolation(2);
-			// Start the gradient at a random color for more variety
-			var startColor = Math.floor(Math.random() * (sheet.bg.colors.length - 1));
-			var distanceBetween = 1 / (sheet.bg.colors.length - 1);
-			for (var i = 0; i < sheet.bg.colors.length; i++) {
-				var index = startColor + i;
-				if (index >= sheet.bg.colors.length) {
-					index -= sheet.bg.colors.length;
-				}
-				var stop = 0;
-				if (i > 0) {
-					stop = i * distanceBetween - (distanceBetween / 2);
-				}
-				gradient.point(stop, rb.TGUtil.getColor(sheet.bg.colors[index]));
-			}
-			// Make the last color in the gradient the same as the first color so that it loops nicely
-			gradient.point(1, rb.TGUtil.getColor(sheet.bg.colors[startColor]));
-
 			new TG.Texture(sheet.width, sheet.height)
-				.add(gradient)
+				.add(rb.TGUtil.getGradient(sheet.bg.colors))
 				.set(new TG.Twirl().radius(radius).position(x, y).strength(strength))
 				.set(new TG.Transform().scale(scale, 1).angle(angle))
 				.toCanvas(bgCanvas);

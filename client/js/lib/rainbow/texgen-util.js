@@ -73,8 +73,38 @@
 			}
 		};
 
+		var getGradient = function(colors, interpolation) {
+			if (!colors || colors.length === 0) return null;
+			if (typeof interpolation === 'undefined') interpolation = 2;
+
+			var gradient = new TG.LinearGradient().interpolation(interpolation);
+			// Start the gradient at a random color for more variety
+			var startColor = Math.floor(Math.random() * (colors.length - 1));
+			var distanceBetween = 0;
+			if (colors.length > 1) {
+				distanceBetween = 1 / (colors.length - 1);
+			}
+
+			for (var i = 0; i < colors.length; i++) {
+				var index = startColor + i;
+				if (index >= colors.length) {
+					index -= colors.length;
+				}
+				var stop = 0;
+				if (i > 0) {
+					stop = i * distanceBetween - (distanceBetween / 2);
+				}
+				gradient.point(stop, getColor(colors[index]));
+			}
+			// Make the last color in the gradient the same as the first color so that it loops nicely
+			gradient.point(1, getColor(colors[startColor]));
+
+			return gradient;
+		};
+
 		return {
-			getColor: getColor
+			getColor: getColor,
+			getGradient: getGradient
 		};
 	}();
 })();

@@ -1,7 +1,7 @@
 (function() {
 	'use strict';
 
-	app.cmp.RainbowScratchPad = {
+	app.cmp.ScratchPad = {
 		controller: function(args) {
 			var ctrl = {
 				init: function(elem, isInit) {

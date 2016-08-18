@@ -66,6 +66,30 @@ html, body, .app {
 	margin: 0;
 }
 
+body {
+	font-family: 'Roboto', sans-serif;
+	color: #212121;
+}
+
+header {
+	position: fixed;
+	left: 0;
+	right: 0;
+	height: 64px;
+	z-index: 1;
+	box-shadow: 0 2px 5px rgba(0,0,0,0.26);
+	background-color: #AD1457;
+	color: white;
+}
+
+.header-wrapper {
+	margin: 0 72px;
+}
+
+.header-title {
+	font-size: 18px;
+	line-height: 64px;
+}
 
 .container {
 	background-color: lightgray;

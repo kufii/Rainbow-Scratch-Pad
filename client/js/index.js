@@ -12,7 +12,7 @@
 		var mountElem = util.q('#app');
 
 		// define application routes here
-		m.mount(mountElem, cmp.RainbowScratchPad);
+		m.mount(mountElem, cmp.Main);
 	};
 
 	/**
@@ -33,6 +33,6 @@
 		'js/lib/': ['util'],
 		'js/lib/rainbow/': ['sheet', 'input', 'texgen-util'],
 		// COMPONENTS
-		'js/components/': ['rainbow-scratch-pad']
+		'js/components/': ['main', 'menu', 'scratch-pad']
 	}, app.mountRoot);
 }());

@@ -21,7 +21,7 @@
 					'darkorange',
 					'yellow',
 					'green',
-					'indigo',
+					'cyan',
 					'blue',
 					'purple'
 				],

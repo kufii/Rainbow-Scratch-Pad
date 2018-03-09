@@ -79,21 +79,15 @@
 
 			let gradient = new TG.LinearGradient().interpolation(interpolation);
 			// Start the gradient at a random color for more variety
-			let startColor = Math.floor(Math.random() * (colors.length - 1));
+			let startColor = util.random(colors.length - 1);
 			let distanceBetween = 0;
 			if (colors.length > 1) {
 				distanceBetween = 1 / (colors.length - 1);
 			}
 
 			for (let i = 0; i < colors.length; i++) {
-				let index = startColor + i;
-				if (index >= colors.length) {
-					index -= colors.length;
-				}
-				let stop = 0;
-				if (i > 0) {
-					stop = (i * distanceBetween) - (distanceBetween / 2);
-				}
+				let index = (startColor + i) % colors.length;
+				let stop = i > 0 ? (i * distanceBetween) - (distanceBetween / 2) : 0;
 				gradient.point(stop, getColor(colors[index]));
 			}
 			// Make the last color in the gradient the same as the first color so that it loops nicely

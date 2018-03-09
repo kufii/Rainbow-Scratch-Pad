@@ -22,7 +22,7 @@
 			return Array.from(context.querySelectorAll(q));
 		},
 		random(min, max) {
-			if (!max) [min, max] = [0, min];
+			if (typeof max === 'undefined') [min, max] = [0, min];
 			return Math.floor(Math.random() * (max - min + 1)) + min;
 		},
 		cookie: {

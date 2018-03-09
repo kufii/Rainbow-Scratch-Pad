@@ -1,61 +1,10 @@
-/**
-** Framework Extend/Override
-**/
-
-/*
-Media Queries (min-width):
-sm == 35.5em
-md == 48em
-lg == 64em
-xl == 80em
-*/
-
-.pure-g > div {
-	box-sizing: border-box;
+[touch-action="none"] {
+	-webkit-touch-action: none;
+	-moz-touch-action: none;
+	-o-touch-action: none;
+	-ms-touch-action: none;
+	touch-action: none;
 }
-
-a {
-	color: inherit;
-}
-
-.join-controls *:first-child {
-	border-top-right-radius: 0 !important;
-	border-bottom-right-radius: 0 !important;
-}
-
-.join-controls *:last-child {
-	border-top-left-radius: 0 !important;
-	border-bottom-left-radius: 0 !important;
-}
-
-.join-controls *:not(:first-child):not(:last-child) {
-	border-radius: 0 !important;
-}
-
-.join-controls button {
-	height: 36px;
-}
-
-/**
-** Utils
-**/
-
-.center {
-	text-align: center;
-}
-
-.loader {
-	display: none;
-	position: fixed;
-	left: 50%;
-	top: 50%;
-	margin-top: -60px;
-	margin-left: -60px;
-}
-
-/**
-** App Styles
-**/
 
 html,
 body,
@@ -96,7 +45,6 @@ header {
 	height: 100%;
 	position: relative;
 	cursor: crosshair;
-	touch-action: none;
 }
 
 .container canvas {

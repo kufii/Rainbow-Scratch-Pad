@@ -11,17 +11,11 @@ xl == 80em
 */
 
 .pure-g > div {
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
 
 a {
 	color: inherit;
-}
-
-.join-controls *:not(:first-child):not(:last-child) {
-	border-radius: 0 !important;
 }
 
 .join-controls *:first-child {
@@ -34,10 +28,13 @@ a {
 	border-bottom-left-radius: 0 !important;
 }
 
+.join-controls *:not(:first-child):not(:last-child) {
+	border-radius: 0 !important;
+}
+
 .join-controls button {
 	height: 36px;
 }
-
 
 /**
 ** Utils
@@ -56,12 +53,14 @@ a {
 	margin-left: -60px;
 }
 
-
 /**
 ** App Styles
 **/
 
-html, body, .app {
+html,
+body,
+.app,
+.container {
 	height: 100%;
 	margin: 0;
 }
@@ -77,8 +76,8 @@ header {
 	right: 0;
 	height: 64px;
 	z-index: 1;
-	box-shadow: 0 2px 5px rgba(0,0,0,0.26);
-	background-color: #AD1457;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+	background-color: #ad1457;
 	color: white;
 }
 
@@ -91,7 +90,7 @@ header {
 	line-height: 64px;
 }
 
-.container {
+.sheet-container {
 	background-color: lightgray;
 	overflow: hidden;
 	height: 100%;

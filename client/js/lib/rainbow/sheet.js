@@ -1,14 +1,11 @@
-(function() {
+(() => {
 	'use strict';
 
-	var rb = window.app.rainbow;
+	app.rainbow.Sheet = function(container, bgCanvas, canvas, uiCanvas) {
+		console.log(container, canvas);
+		const ctx = canvas.getContext('2d');
 
-	rb.Sheet = function(container, bgCanvas, canvas, uiCanvas) {
-		var bgCtx = bgCanvas.getContext('2d');
-		var ctx = canvas.getContext('2d');
-		var uiCtx = uiCanvas.getContext('2d');
-
-		var sheet = {
+		let sheet = {
 			color: 'black',
 			penSize: 8,
 			x: 0,
@@ -36,51 +33,51 @@
 			}
 		};
 
-		var drawBackground = function() {
-			var scale = (Math.random() * (sheet.bg.scale.max - sheet.bg.scale.min)) + sheet.bg.scale.min;
-			var angle = Math.random() * 360;
+		const drawBackground = function() {
+			let scale = (Math.random() * (sheet.bg.scale.max - sheet.bg.scale.min)) + sheet.bg.scale.min;
+			let angle = Math.random() * 360;
 
-			var radius = Math.min(sheet.width, sheet.height) / 2;
-			var x = (Math.random() * ((sheet.width - radius) - radius)) + radius;
-			var y = (Math.random() * ((sheet.height - radius) - radius)) + radius;
-			var strength = (Math.random() * (sheet.bg.twistStrength.max - sheet.bg.twistStrength.min)) + sheet.bg.twistStrength.min;
+			let radius = Math.min(sheet.width, sheet.height) / 2;
+			let x = (Math.random() * ((sheet.width - radius) - radius)) + radius;
+			let y = (Math.random() * ((sheet.height - radius) - radius)) + radius;
+			let strength = (Math.random() * (sheet.bg.twistStrength.max - sheet.bg.twistStrength.min)) + sheet.bg.twistStrength.min;
 
 			new TG.Texture(sheet.width, sheet.height)
-				.add(rb.TGUtil.getGradient(sheet.bg.colors))
+				.add(app.rainbow.TGUtil.getGradient(sheet.bg.colors))
 				.set(new TG.Twirl().radius(radius).position(x, y).strength(strength))
 				.set(new TG.Transform().scale(scale, 1).angle(angle))
 				.toCanvas(bgCanvas);
 		};
 
-		var drawSheet = function() {
+		const drawSheet = function() {
 			ctx.fillStyle = sheet.color;
 			ctx.fillRect(0, 0, sheet.width, sheet.height);
 		};
 
-		var updateCanvasWidth = function() {
+		const updateCanvasWidth = function() {
 			canvas.width = bgCanvas.width = uiCanvas.width = sheet.width;
 			canvas.height = bgCanvas.height = uiCanvas.height = sheet.height;
 		};
 
-		var updateCanvasPos = function() {
-			canvas.style.left = bgCanvas.style.left = uiCanvas.style.left = sheet.x + 'px';
-			canvas.style.top = bgCanvas.style.top = uiCanvas.style.top = sheet.y + 'px';
+		const updateCanvasPos = function() {
+			canvas.style.left = bgCanvas.style.left = uiCanvas.style.left = `${sheet.x}px`;
+			canvas.style.top = bgCanvas.style.top = uiCanvas.style.top = `${sheet.y}px`;
 		};
 
-		var center = function() {
-			sheet.x = container.clientWidth / 2 - sheet.width / 2;
-			sheet.y = container.clientHeight / 2 - sheet.height / 2;
+		const center = function() {
+			sheet.x = (container.clientWidth / 2) - (sheet.width / 2);
+			sheet.y = (container.clientHeight / 2) - (sheet.height / 2);
 			updateCanvasPos();
 		};
 
-		var move = function(dx, dy) {
+		const move = function(dx, dy) {
 			sheet.x += dx;
 			sheet.y += dy;
 			updateCanvasPos();
 		};
 
 
-		var scratch = function(old, oldMid, currentMid, pressure) {
+		const scratch = function(old, oldMid, currentMid, pressure) {
 			ctx.beginPath();
 			ctx.moveTo(currentMid.x - sheet.x, currentMid.y - sheet.y);
 			ctx.quadraticCurveTo(old.x - sheet.x, old.y - sheet.y, oldMid.x - sheet.x, oldMid.y - sheet.y);
@@ -92,7 +89,7 @@
 			ctx.globalCompositeOperation = 'source-over';
 		};
 
-		var init = function() {
+		const init = function() {
 			updateCanvasWidth();
 			updateCanvasPos();
 			center();
@@ -103,9 +100,9 @@
 		init();
 
 		return {
-			container: container,
-			move: move,
-			scratch: scratch
+			container,
+			move,
+			scratch
 		};
 	};
 })();

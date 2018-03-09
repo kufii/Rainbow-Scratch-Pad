@@ -1,19 +1,18 @@
-(function() {
+(() => {
 	'use strict';
 
-	var rb = window.app.rainbow;
+	app.rainbow.Input = function(sheet) {
+		console.log(sheet);
+		let touch = {};
 
-	rb.Input = function(sheet) {
-		var touch = {};
-
-		var getMidPoint = function(p1, p2) {
+		const getMidPoint = function(p1, p2) {
 			return {
 				x: p1.x + p2.x>>1,
 				y: p1.y + p2.y>>1
 			};
 		};
 
-		var setTouch = function (coord) {
+		const setTouch = function(coord) {
 			if (touch.coord) {
 				touch.old = touch.coord;
 				if (touch.mid) {
@@ -26,16 +25,17 @@
 			touch.coord = coord;
 		};
 
-		var clearTouch = function() {
+		const clearTouch = function() {
 			touch.coord = null;
 			touch.mid = null;
 			touch.old = null;
 			touch.oldMid = null;
 		};
 
-		sheet.container.addEventListener('pointermove', function(e) {
+		sheet.container.addEventListener('pointermove', e => {
+			let { offsetLeft, offsetTop } = sheet.container;
 			if (e.pressure > 0) {
-				setTouch({ x: e.pageX - this.offsetLeft, y: e.pageY - this.offsetTop });
+				setTouch({ x: e.pageX - offsetLeft, y: e.pageY - offsetTop });
 				if (touch.old) {
 					if (touch.button2) {
 						sheet.move(touch.coord.x - touch.old.x, touch.coord.y - touch.old.y);
@@ -48,19 +48,21 @@
 			}
 		});
 
-		sheet.container.addEventListener('pointerdown', function(e) {
-			touch['button' + e.button] = true;
+		sheet.container.addEventListener('pointerdown', e => {
+			console.log('rhrhrh');
+			let { offsetLeft, offsetTop } = sheet.container;
+			touch[`button${e.button}`] = true;
 			if (!touch.coord) {
-				setTouch({ x: e.pageX - this.offsetLeft, y: e.pageY - this.offsetTop });
+				setTouch({ x: e.pageX - offsetLeft, y: e.pageY - offsetTop });
 			}
 		});
 
-		sheet.container.addEventListener('pointerup', function(e) {
-			touch['button' + e.button] = false;
+		sheet.container.addEventListener('pointerup', e => {
+			touch[`button${e.button}`] = false;
 			clearTouch();
 		});
 
-		sheet.container.oncontextmenu = function(e) {
+		sheet.container.oncontextmenu = e => {
 			e.preventDefault();
 			return false;
 		};

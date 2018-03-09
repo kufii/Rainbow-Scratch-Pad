@@ -1,4 +1,4 @@
-(function() {
+(() => {
 	'use strict';
 
 	app.shared = {
@@ -7,9 +7,9 @@
 
 	// mounts app
 	app.mountRoot = function() {
-		var cmp = app.cmp;
+		let cmp = app.cmp;
 
-		var mountElem = util.q('#app');
+		let mountElem = util.q('#app');
 
 		// define application routes here
 		m.mount(mountElem, cmp.Main);
@@ -35,4 +35,4 @@
 		// COMPONENTS
 		'js/components/': ['main', 'menu', 'scratch-pad']
 	}, app.mountRoot);
-}());
+})();

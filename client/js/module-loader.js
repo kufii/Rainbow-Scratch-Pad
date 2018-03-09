@@ -1,35 +1,33 @@
-(function() {
+(() => {
 	'use strict';
 
-	var app = window.app = window.app || {};
+	let app = window.app = window.app || {};
 
-	var addScript = function(src, cb) {
-		var script = document.createElement('script');
+	const addScript = function(src, cb) {
+		let script = document.createElement('script');
 		script.onload = cb;
 		script.src = src;
 		document.head.appendChild(script);
 	};
 
 	app.loadModules = function(deps, done) {
+		let dir;
+		let loaded = 0;
+		let loading = 0;
 
-		var dir;
-		var loaded = 0;
-		var loading = 0;
-
-		var load = function() {
+		const load = function() {
 			loaded += 1;
 			if (loaded === loading) done();
 		};
 
 		for (dir in deps) {
 			if (deps.hasOwnProperty(dir)) {
-				deps[dir].forEach(function(file) {
-					var src = dir + file + '.js';
+				deps[dir].forEach(file => {
+					let src = `${dir + file}.js`;
 					console.log(++loading, src);
 					addScript(src, load);
 				});
 			}
 		}
-
 	};
-}());
+})();

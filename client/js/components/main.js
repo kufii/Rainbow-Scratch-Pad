@@ -1,12 +1,12 @@
-(function() {
+(() => {
 	'use strict';
 
 	app.cmp.Main = {
-		view: function(ctrl, args) {
-			return [
+		view() {
+			return m('div.container', [
 				m(app.cmp.Menu),
 				m(app.cmp.ScratchPad)
-			];
+			]);
 		}
 	};
 })();

@@ -1,27 +1,19 @@
-(function() {
+(() => {
 	'use strict';
 
 	app.cmp.ScratchPad = {
-		controller: function(args) {
-			var ctrl = {
-				init: function(elem, isInit) {
-					if(isInit) return;
-					app.rainbow.Input(
-						app.rainbow.Sheet(
-							elem,
-							util.q('#background'),
-							util.q('#main'),
-							util.q('#ui')
-						)
-					);
-				}
-			};
-			return ctrl;
+		oncreate(vnode) {
+			app.rainbow.Input(
+				app.rainbow.Sheet(
+					vnode.dom,
+					util.q('#background'),
+					util.q('#main'),
+					util.q('#ui')
+				)
+			);
 		},
-		view: function(ctrl, args) {
-			return m('div.container[touch-action=none]', {
-				config: ctrl.init
-			}, [
+		view() {
+			return m('div.sheet-container[touch-action=none]', [
 				m('canvas#background'),
 				m('canvas#main'),
 				m('canvas#ui')

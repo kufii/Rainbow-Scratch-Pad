@@ -21,7 +21,6 @@
 					'green',
 					'cyan',
 					'blue',
-					
 					'purple'
 				],
 				scale: {

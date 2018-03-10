@@ -50,3 +50,10 @@ header {
 .container canvas {
 	position: absolute;
 }
+
+/* Mobile */
+@media only screen and (max-width: 767px) {
+	.header-wrapper {
+		margin: 0 16px;
+	}
+}

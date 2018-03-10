@@ -31,7 +31,7 @@
 		'js/lib/vendor/': ['TexGen'],
 		// EXTRA
 		'js/lib/': ['util'],
-		'js/lib/rainbow/': ['sheet', 'input', 'texgen-util'],
+		'js/lib/rainbow/': ['sheet', 'point', 'bezier', 'input', 'texgen-util'],
 		// COMPONENTS
 		'js/components/': ['main', 'menu', 'scratch-pad']
 	}, app.mountRoot);

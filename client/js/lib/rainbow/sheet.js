@@ -35,13 +35,13 @@
 		};
 
 		const drawBackground = function() {
-			let scale = (Math.random() * (sheet.bg.scale.max - sheet.bg.scale.min)) + sheet.bg.scale.min;
-			let angle = Math.random() * 360;
+			let scale = util.randomFloat(sheet.bg.scale.min, sheet.bg.scale.max);
+			let angle = util.randomFloat(360);
 
 			let radius = Math.min(sheet.width, sheet.height) / 2;
-			let x = (Math.random() * ((sheet.width - radius) - radius)) + radius;
-			let y = (Math.random() * ((sheet.height - radius) - radius)) + radius;
-			let strength = (Math.random() * (sheet.bg.twistStrength.max - sheet.bg.twistStrength.min)) + sheet.bg.twistStrength.min;
+			let x = util.randomFloat(radius, sheet.width - radius);
+			let y = util.randomFloat(radius, sheet.height - radius);
+			let strength = util.randomFloat(sheet.bg.twistStrength.min, sheet.bg.twistStrength.max);
 
 			new TG.Texture(sheet.width, sheet.height)
 				.add(app.rainbow.TGUtil.getGradient(sheet.bg.colors))

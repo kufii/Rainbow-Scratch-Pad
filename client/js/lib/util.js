@@ -25,6 +25,10 @@
 			if (typeof max === 'undefined') [min, max] = [0, min];
 			return Math.floor(Math.random() * (max - min + 1)) + min;
 		},
+		randomFloat(min, max) {
+			if (typeof max === 'undefined') [min, max] = [0, min];
+			return (Math.random() * (max - min)) + min;
+		},
 		cookie: {
 			set(key, value, expiry) {
 				document.cookie = `${key}=${value};expires=${expiry}`;

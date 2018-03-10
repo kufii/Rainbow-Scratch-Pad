@@ -42,9 +42,9 @@
 	app.mutil = {
 		requestWithLoader(obj) {
 			let loaders = util.qq('.loader');
-			loaders.forEach(loader => loader.style.display = 'block');
+			loaders.forEach(loader => loader.removeAttribute('hidden'));
 			return m.request(obj).then(data => {
-				loaders.forEach(loader => loader.style.display = 'none');
+				loaders.forEach(loader => loader.setAttribute('hidden', ''));
 				return data;
 			});
 		},

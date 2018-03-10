@@ -62,7 +62,7 @@
 			}, children);
 		},
 		icon(name, children) {
-			return m(`i.fa.fa-${name}`, children);
+			return m('i.material-icons', name, children);
 		}
 	};
 })();

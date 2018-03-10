@@ -20,6 +20,7 @@
 					'green',
 					'cyan',
 					'blue',
+					'taupe',
 					'purple'
 				],
 				scale: {

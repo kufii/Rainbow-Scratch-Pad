@@ -14,13 +14,14 @@
 			height: 1024,
 			bg: {
 				colors: [
+					'deeppink',
 					'red',
 					'darkorange',
 					'yellow',
 					'green',
 					'cyan',
 					'blue',
-					'#b38b6d',
+					
 					'purple'
 				],
 				scale: {

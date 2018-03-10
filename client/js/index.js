@@ -28,7 +28,7 @@
 	app.loadModules({
 		// VENDOR
 		'https://code.jquery.com/pep/0.4.1/': ['pep'],
-		'js/lib/vendor/': ['TexGen'],
+		'https://cdn.rawgit.com/mrdoob/texgen.js/c224ca44de238deb6adfe873d0eab08d5ec17458/src/': ['TexGen'],
 		// EXTRA
 		'js/lib/': ['util'],
 		'js/lib/rainbow/': ['sheet', 'point', 'bezier', 'input', 'texgen-util'],

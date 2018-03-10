@@ -18,6 +18,7 @@
 					'red',
 					'darkorange',
 					'yellow',
+					'yellow',
 					'green',
 					'cyan',
 					'blue',

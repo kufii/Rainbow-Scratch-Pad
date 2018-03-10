@@ -3,15 +3,10 @@
 	'use strict';
 
 	class Point {
-		constructor(x, y, pressure, time = new Date().getTime()) {
+		constructor(x, y, pressure) {
 			this.x = x;
 			this.y = y;
 			this.pressure = pressure;
-			this.time = time;
-		}
-
-		velocityFrom(start) {
-			return (this.time !== start.time) ? this.distanceTo(start) / (this.time - start.time) : 1;
 		}
 
 		distanceTo(start) {
@@ -19,7 +14,7 @@
 		}
 
 		equals(other) {
-			return this.x === other.x && this.y === other.y && this.time === other.time;
+			return this.x === other.x && this.y === other.y;
 		}
 	}
 

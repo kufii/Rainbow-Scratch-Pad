@@ -45,12 +45,10 @@
 		}
 
 		_point(t, start, c1, c2, end) {
-			/* eslint-disable no-multi-spaces, space-in-parens */
-			return (       start * (1.0 - t) * (1.0 - t)  * (1.0 - t)) +
-			(3.0 *  c1    * (1.0 - t) * (1.0 - t)  * t) +
-			(3.0 *  c2    * (1.0 - t) * t          * t) +
-			(       end   * t         * t          * t);
-			/* eslint-enable no-multi-spaces, space-in-parens */
+			return (start * (1.0 - t) * (1.0 - t) * (1.0 - t)) +
+			(3.0 * c1 * (1.0 - t) * (1.0 - t) * t) +
+			(3.0 * c2 * (1.0 - t) * t * t) +
+			(end * t * t * t);
 		}
 	}
 

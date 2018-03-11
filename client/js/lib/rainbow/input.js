@@ -42,16 +42,13 @@
 				// To reduce the initial lag make it work with 3 points by copying the first point to the beginning.
 				if (points.length === 3) points.unshift(points[0]);
 
-				let tmp = calculateCurveControlPoints(points[0], points[1], points[2]);
-				const c2 = tmp.c2;
-				tmp = calculateCurveControlPoints(points[1], points[2], points[3]);
-				const c3 = tmp.c1;
-				const bezier = new Bezier(points[1], c2, c3, points[2]);
+				const control1 = calculateCurveControlPoints(points[0], points[1], points[2]).c2;
+				const control2 = calculateCurveControlPoints(points[1], points[2], points[3]).c1;
+				const bezier = new Bezier(points[1], control1, control2, points[2]);
 				const startPressure = points[0].pressure;
-				const endPressure = points[points.length - 1].pressure;
+				const endPressure = points[3].pressure;
 
-				// Remove the first element from the list,
-				// so that we always have no more than 4 points in points array.
+				// Remove the first element from the list so that we always have no more than 4 points in points array.
 				points.shift();
 
 				return { bezier, startPressure, endPressure };
@@ -93,8 +90,8 @@
 			}
 		});
 
-		sheet.container.addEventListener('pointerup', e => {
-			touch[`button${e.button}`] = false;
+		sheet.container.addEventListener('pointerup', () => {
+			touch = {};
 		});
 
 		sheet.container.oncontextmenu = e => {

@@ -40,6 +40,14 @@
 			remove(key) {
 				document.cookie = `${key}=delete;expires=${new Date(Date.now() - 100).toUTCString()}`;
 			}
+		},
+		loadImg(src) {
+			return new Promise((resolve, reject) => {
+				let img = new Image();
+				img.onload = () => resolve(img);
+				img.onerror = () => reject(new Error('img not found'));
+				img.src = src;
+			});
 		}
 	};
 

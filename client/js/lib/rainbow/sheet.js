@@ -3,6 +3,7 @@
 
 	app.rainbow.Sheet = function(container, bgCanvas, canvas, uiCanvas) {
 		const ctx = canvas.getContext('2d');
+		const bgctx = bgCanvas.getContext('2d');
 
 		let sheet = {
 			color: 'black',
@@ -117,6 +118,41 @@
 			ctx.globalCompositeOperation = 'source-over';
 		};
 
+		const exportJSON = function() {
+			return JSON.stringify({
+				width: sheet.width,
+				height: sheet.height,
+				bg: bgCanvas.toDataURL('image/webp'),
+				fg: canvas.toDataURL('image/webp')
+			});
+		};
+
+		const importJSON = function(json) {
+			let obj = JSON.parse(json);
+			sheet.width = obj.width;
+			sheet.height = obj.height;
+			updateCanvasWidth();
+			center();
+
+			Promise.all([
+				util.loadImg(obj.bg),
+				util.loadImg(obj.fg)
+			]).then(([bg, fg]) => {
+				bgctx.drawImage(bg, 0, 0);
+				ctx.drawImage(fg, 0, 0);
+			});
+		};
+
+		const exportImg = function(type = 'image/png') {
+			let tmpCanvas = document.createElement('canvas');
+			let tmpCtx = tmpCanvas.getContext('2d');
+			tmpCanvas.width = sheet.width;
+			tmpCanvas.height = sheet.height;
+			tmpCtx.drawImage(bgCanvas, 0, 0);
+			tmpCtx.drawImage(canvas, 0, 0);
+			return tmpCanvas.toDataURL(type);
+		};
+
 		const init = function() {
 			updateCanvasWidth();
 			updateCanvasPos();
@@ -130,7 +166,10 @@
 		return {
 			container,
 			move,
-			scratch
+			scratch,
+			exportJSON,
+			importJSON,
+			exportImg
 		};
 	};
 })();

@@ -84,19 +84,14 @@
 
 		sheet.container.addEventListener('pointerdown', e => {
 			touch[`button${e.button}`] = true;
-			if (e.button === 0) {
+			if (touch.button0) {
 				points = [];
 				updateStroke(e);
 			}
 		});
 
-		sheet.container.addEventListener('pointerup', () => {
-			touch = {};
-		});
+		sheet.container.addEventListener('pointerup', () => touch = {});
 
-		sheet.container.oncontextmenu = e => {
-			e.preventDefault();
-			return false;
-		};
+		sheet.container.oncontextmenu = e => e.preventDefault();
 	};
 })();

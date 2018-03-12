@@ -38,9 +38,8 @@
 		};
 
 		const hexToRgbA = function(hex) {
-			let c;
 			if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
-				c = hex.substring(1).split('');
+				let c = hex.substring(1).split('');
 				if (c.length === 3) {
 					c = [c[0], c[0], c[1], c[1], c[2], c[2]];
 				}
@@ -73,9 +72,8 @@
 			}
 		};
 
-		const getGradient = function(colors, interpolation) {
+		const getGradient = function(colors, interpolation = 2) {
 			if (!colors || colors.length === 0) return null;
-			if (typeof interpolation === 'undefined') interpolation = 2;
 
 			let gradient = new TG.LinearGradient().interpolation(interpolation);
 			// Start the gradient at a random color for more variety

@@ -1,17 +1,37 @@
 (() => {
 	'use strict';
 
-	app.rainbow.Sheet = function(container, bgCanvas, canvas, uiCanvas) {
+	app.rainbow.Sheet = function(container, bgCanvas, canvas, uiCanvas, width = 1024, height = 1024) {
 		const ctx = canvas.getContext('2d');
 		const bgctx = bgCanvas.getContext('2d');
 
 		let sheet = {
 			color: 'black',
 			penSize: 8,
-			x: 0,
-			y: 0,
-			width: 1024,
-			height: 1024,
+			get x() {
+				return parseFloat(canvas.style.left);
+			},
+			set x(value) {
+				canvas.style.left = bgCanvas.style.left = uiCanvas.style.left = `${value}px`;
+			},
+			get y() {
+				return parseFloat(canvas.style.top);
+			},
+			set y(value) {
+				canvas.style.top = bgCanvas.style.top = uiCanvas.style.top = `${value}px`;
+			},
+			get width() {
+				return parseFloat(canvas.width);
+			},
+			set width(value) {
+				canvas.width = bgCanvas.width = uiCanvas.width = value;
+			},
+			get height() {
+				return parseFloat(canvas.height);
+			},
+			set height(value) {
+				canvas.height = bgCanvas.height = uiCanvas.height = value;
+			},
 			bg: {
 				colors: [
 					'deeppink',
@@ -56,26 +76,14 @@
 			ctx.fillRect(0, 0, sheet.width, sheet.height);
 		};
 
-		const updateCanvasWidth = function() {
-			canvas.width = bgCanvas.width = uiCanvas.width = sheet.width;
-			canvas.height = bgCanvas.height = uiCanvas.height = sheet.height;
-		};
-
-		const updateCanvasPos = function() {
-			canvas.style.left = bgCanvas.style.left = uiCanvas.style.left = `${sheet.x}px`;
-			canvas.style.top = bgCanvas.style.top = uiCanvas.style.top = `${sheet.y}px`;
-		};
-
 		const center = function() {
 			sheet.x = (container.clientWidth / 2) - (sheet.width / 2);
 			sheet.y = (container.clientHeight / 2) - (sheet.height / 2);
-			updateCanvasPos();
 		};
 
 		const move = function(dx, dy) {
 			sheet.x += dx;
 			sheet.y += dy;
-			updateCanvasPos();
 		};
 
 		const scratch = function(bezier, startPressure, endPressure) {
@@ -131,7 +139,6 @@
 			let obj = JSON.parse(json);
 			sheet.width = obj.width;
 			sheet.height = obj.height;
-			updateCanvasWidth();
 			center();
 
 			Promise.all([
@@ -154,8 +161,8 @@
 		};
 
 		const init = function() {
-			updateCanvasWidth();
-			updateCanvasPos();
+			sheet.width = width;
+			sheet.height = height;
 			center();
 			drawBackground();
 			drawSheet();

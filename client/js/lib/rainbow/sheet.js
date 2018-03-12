@@ -34,15 +34,17 @@
 			},
 			bg: {
 				colors: [
-					'deeppink',
 					'red',
+					'red',
+					'darkorange',
 					'darkorange',
 					'yellow',
 					'yellow',
-					'green',
-					'cyan',
-					'blue',
-					'purple'
+					'forestgreen',
+					'forestgreen',
+					'#2E37FE',
+					'purple',
+					'deeppink'
 				],
 				scale: {
 					min: 0.6,

@@ -9,7 +9,7 @@
 			(end * t * t * t);
 	};
 
-	class Bezier {
+	app.rainbow.Bezier = class {
 		constructor(startPoint, control1, control2, endPoint) {
 			this.startPoint = startPoint;
 			this.control1 = control1;
@@ -23,7 +23,7 @@
 			let px;
 			let py;
 
-			for (let i = 0; i <= steps; i += 1) {
+			for (let i = 0; i <= steps; i++) {
 				const t = i / steps;
 				const cx = getPoint(
 					t,
@@ -73,7 +73,5 @@
 			const pressure = this.startPoint.pressure + (ttt * pressureDelta);
 			return { x, y, pressure };
 		}
-	}
-
-	app.rainbow.Bezier = Bezier;
+	};
 })();

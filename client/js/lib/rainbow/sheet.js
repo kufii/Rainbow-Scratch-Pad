@@ -93,7 +93,7 @@
 			const drawSteps = Math.floor(bezier.length);
 
 			ctx.beginPath();
-			for (let i = 0; i < drawSteps; i += 1) {
+			for (let i = 0; i < drawSteps; i++) {
 				let { x, y, pressure } = bezier.pointAt(i / drawSteps);
 
 				x -= sheet.x;

@@ -1,6 +1,13 @@
-/* Based off https://github.com/szimek/signature_pad */
+// Based off https://github.com/szimek/signature_pad
 (() => {
 	'use strict';
+
+	const getPoint = function(t, start, c1, c2, end) {
+		return (start * (1.0 - t) * (1.0 - t) * (1.0 - t)) +
+			(3.0 * c1 * (1.0 - t) * (1.0 - t) * t) +
+			(3.0 * c2 * (1.0 - t) * t * t) +
+			(end * t * t * t);
+	};
 
 	class Bezier {
 		constructor(startPoint, control1, control2, endPoint) {
@@ -18,14 +25,14 @@
 
 			for (let i = 0; i <= steps; i += 1) {
 				const t = i / steps;
-				const cx = this._point(
+				const cx = getPoint(
 					t,
 					this.startPoint.x,
 					this.control1.x,
 					this.control2.x,
 					this.endPoint.x
 				);
-				const cy = this._point(
+				const cy = getPoint(
 					t,
 					this.startPoint.y,
 					this.control1.y,
@@ -42,13 +49,6 @@
 			}
 
 			return length;
-		}
-
-		_point(t, start, c1, c2, end) {
-			return (start * (1.0 - t) * (1.0 - t) * (1.0 - t)) +
-			(3.0 * c1 * (1.0 - t) * (1.0 - t) * t) +
-			(3.0 * c2 * (1.0 - t) * t * t) +
-			(end * t * t * t);
 		}
 	}
 

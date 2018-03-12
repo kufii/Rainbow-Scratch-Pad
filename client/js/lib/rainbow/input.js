@@ -2,7 +2,6 @@
 	'use strict';
 
 	app.rainbow.Input = function(sheet) {
-		const Point = app.rainbow.Point;
 		const Bezier = app.rainbow.Bezier;
 
 		let pointer = { x: 0, y: 0 };
@@ -31,8 +30,8 @@
 			const ty = s2.y - cm.y;
 
 			return {
-				c1: new Point(m1.x + tx, m1.y + ty),
-				c2: new Point(m2.x + tx, m2.y + ty)
+				c1: { x: m1.x + tx, y: m1.y + ty },
+				c2: { x: m2.x + tx, y: m2.y + ty }
 			};
 		};
 
@@ -60,7 +59,7 @@
 		const updateStroke = function(e) {
 			const x = e.pageX - sheet.container.offsetLeft;
 			const y = e.pageY - sheet.container.offsetTop;
-			const point = new Point(x, y, e.pressure);
+			const point = { x, y, pressure: e.pressure };
 
 			const { bezier, startPressure, endPressure } = addPoint(point);
 			if (bezier) {

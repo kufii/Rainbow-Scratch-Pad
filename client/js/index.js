@@ -31,7 +31,7 @@
 		'https://cdn.rawgit.com/mrdoob/texgen.js/c224ca44de238deb6adfe873d0eab08d5ec17458/src/': ['TexGen'],
 		// EXTRA
 		'js/lib/': ['util'],
-		'js/lib/rainbow/': ['sheet', 'point', 'bezier', 'input', 'texgen-util'],
+		'js/lib/rainbow/': ['sheet', 'bezier', 'input', 'texgen-util'],
 		// COMPONENTS
 		'js/components/': ['main', 'menu', 'scratch-pad']
 	}, app.mountRoot);

@@ -95,7 +95,7 @@
 
 			ctx.beginPath();
 			for (let i = 0; i < drawSteps; i += 1) {
-				/* Based off https://github.com/szimek/signature_pad */
+				// Based off https://github.com/szimek/signature_pad
 				// Calculate the Bezier (x, y) coordinate for this step.
 				const t = i / drawSteps;
 				const tt = t * t;

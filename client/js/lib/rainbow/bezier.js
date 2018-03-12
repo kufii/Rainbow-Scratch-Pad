@@ -50,6 +50,29 @@
 
 			return length;
 		}
+
+		pointAt(t) {
+			const pressureDelta = this.endPoint.pressure - this.startPoint.pressure;
+
+			const tt = t * t;
+			const ttt = tt * t;
+			const u = 1 - t;
+			const uu = u * u;
+			const uuu = uu * u;
+
+			let x = uuu * this.startPoint.x;
+			x += 3 * uu * t * this.control1.x;
+			x += 3 * u * tt * this.control2.x;
+			x += ttt * this.endPoint.x;
+
+			let y = uuu * this.startPoint.y;
+			y += 3 * uu * t * this.control1.y;
+			y += 3 * u * tt * this.control2.y;
+			y += ttt * this.endPoint.y;
+
+			const pressure = this.startPoint.pressure + (ttt * pressureDelta);
+			return { x, y, pressure };
+		}
 	}
 
 	app.rainbow.Bezier = Bezier;

@@ -86,35 +86,16 @@
 			sheet.y += dy;
 		};
 
-		const scratch = function(bezier, startPressure, endPressure) {
+		const scratch = function(bezier) {
 			ctx.lineJoin = ctx.lineCap = 'round';
 			ctx.globalCompositeOperation = 'destination-out';
 
-			const pressureDelta = endPressure - startPressure;
 			const drawSteps = Math.floor(bezier.length);
 
 			ctx.beginPath();
 			for (let i = 0; i < drawSteps; i += 1) {
-				// Based off https://github.com/szimek/signature_pad
-				// Calculate the Bezier (x, y) coordinate for this step.
-				const t = i / drawSteps;
-				const tt = t * t;
-				const ttt = tt * t;
-				const u = 1 - t;
-				const uu = u * u;
-				const uuu = uu * u;
+				let { x, y, pressure } = bezier.pointAt(i / drawSteps);
 
-				let x = uuu * bezier.startPoint.x;
-				x += 3 * uu * t * bezier.control1.x;
-				x += 3 * u * tt * bezier.control2.x;
-				x += ttt * bezier.endPoint.x;
-
-				let y = uuu * bezier.startPoint.y;
-				y += 3 * uu * t * bezier.control1.y;
-				y += 3 * u * tt * bezier.control2.y;
-				y += ttt * bezier.endPoint.y;
-
-				const pressure = startPressure + (ttt * pressureDelta);
 				x -= sheet.x;
 				y -= sheet.y;
 				ctx.moveTo(x, y);

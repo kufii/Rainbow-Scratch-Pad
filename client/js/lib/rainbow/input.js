@@ -44,13 +44,11 @@
 				const control1 = calculateCurveControlPoints(points[0], points[1], points[2]).c2;
 				const control2 = calculateCurveControlPoints(points[1], points[2], points[3]).c1;
 				const bezier = new Bezier(points[1], control1, control2, points[2]);
-				const startPressure = points[0].pressure;
-				const endPressure = points[3].pressure;
 
 				// Remove the first element from the list so that we always have no more than 4 points in points array.
 				points.shift();
 
-				return { bezier, startPressure, endPressure };
+				return bezier;
 			}
 
 			return {};
@@ -61,9 +59,9 @@
 			const y = e.pageY - sheet.container.offsetTop;
 			const point = { x, y, pressure: e.pressure };
 
-			const { bezier, startPressure, endPressure } = addPoint(point);
+			const bezier = addPoint(point);
 			if (bezier) {
-				sheet.scratch(bezier, startPressure, endPressure);
+				sheet.scratch(bezier);
 			}
 		};
 

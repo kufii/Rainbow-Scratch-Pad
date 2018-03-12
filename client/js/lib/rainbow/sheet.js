@@ -122,8 +122,8 @@
 			return JSON.stringify({
 				width: sheet.width,
 				height: sheet.height,
-				bg: bgCanvas.toDataURL('image/webp'),
-				fg: canvas.toDataURL('image/webp')
+				bg: bgCanvas.toDataURL('image/png'),
+				fg: canvas.toDataURL('image/png')
 			});
 		};
 
@@ -143,14 +143,14 @@
 			});
 		};
 
-		const exportImg = function(type = 'image/png') {
+		const exportImg = function(type = 'image/png', quality) {
 			let tmpCanvas = document.createElement('canvas');
 			let tmpCtx = tmpCanvas.getContext('2d');
 			tmpCanvas.width = sheet.width;
 			tmpCanvas.height = sheet.height;
 			tmpCtx.drawImage(bgCanvas, 0, 0);
 			tmpCtx.drawImage(canvas, 0, 0);
-			return tmpCanvas.toDataURL(type);
+			return tmpCanvas.toDataURL(type, quality);
 		};
 
 		const init = function() {

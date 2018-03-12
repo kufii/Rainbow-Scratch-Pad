@@ -70,14 +70,10 @@ header {
 	transition: background-color 0.3s;
 	padding: 0 15px;
 	font-size: 1rem;
-}
-
-.header-wrapper ul a {
-	transition: background-color 0.3s;
 	cursor: pointer;
 }
 
-.header-wrapper ul a:hover {
+.header-wrapper ul li:hover {
 	background-color: #9e124f;
 }
 

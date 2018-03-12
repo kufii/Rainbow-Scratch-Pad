@@ -8,8 +8,8 @@
 				m('div.header-wrapper', [
 					m('span.header-title', this.title),
 					m('ul.right', [
-						m('a[title="Save"]', m('li', app.mutil.icon('save'))),
-						m('a[title="More"]', m('li', app.mutil.icon('more_vert')))
+						m('li', m('a[title="Save"]', app.mutil.icon('save'))),
+						m('li', m('a[title="More"]', app.mutil.icon('more_vert')))
 					])
 				])
 			]);

@@ -9,25 +9,25 @@
 			color: 'black',
 			penSize: 8,
 			get x() {
-				return parseFloat(canvas.style.left);
+				return canvas.offsetLeft;
 			},
 			set x(value) {
 				canvas.style.left = bgCanvas.style.left = uiCanvas.style.left = `${value}px`;
 			},
 			get y() {
-				return parseFloat(canvas.style.top);
+				return canvas.offsetTop;
 			},
 			set y(value) {
 				canvas.style.top = bgCanvas.style.top = uiCanvas.style.top = `${value}px`;
 			},
 			get width() {
-				return parseFloat(canvas.width);
+				return canvas.width;
 			},
 			set width(value) {
 				canvas.width = bgCanvas.width = uiCanvas.width = value;
 			},
 			get height() {
-				return parseFloat(canvas.height);
+				return canvas.height;
 			},
 			set height(value) {
 				canvas.height = bgCanvas.height = uiCanvas.height = value;

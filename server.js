@@ -1,21 +1,23 @@
-var express = require('express');
-var app = express();
+'use strict';
 
-var ENV = process.env.NODE_ENV || 'development';
-var clientDir = __dirname + '/client';
+const express = require('express');
+const app = express();
+
+const ENV = process.env.NODE_ENV || 'development';
+const clientDir = `${__dirname}/client`;
 
 // setup reload server
 if (ENV === 'development') {
 	console.log('DEV: starting livereload');
-	var livereload = require('livereload');
-	var reloadServer = livereload.createServer();
+	const livereload = require('livereload');
+	const reloadServer = livereload.createServer();
 	reloadServer.watch(clientDir);
 }
 
 app.use(express.static(clientDir));
 
-app.get('/*', function(req, res) {
-	res.sendFile(clientDir + '/index.html');
+app.get('/*', (req, res) => {
+	res.sendFile(`${clientDir}/index.html`);
 });
 
 app.listen(8080);

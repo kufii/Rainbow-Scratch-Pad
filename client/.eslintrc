@@ -1,5 +1,9 @@
 {
 	"extends": "adpyke-es6",
+	"env": {
+		"browser": true,
+		"node": false
+	},
 	"globals": {
 		"app": true,
 		"util": true,

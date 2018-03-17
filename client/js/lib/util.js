@@ -12,7 +12,7 @@
 				}
 			};
 		},
-		titleCase(str) {
+		toTitleCase(str) {
 			return str.replace(/[a-z0-9]+/gi, word => word.slice(0, 1).toUpperCase() + word.slice(1));
 		},
 		q(q, context = document) {

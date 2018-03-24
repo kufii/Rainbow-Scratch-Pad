@@ -86,7 +86,7 @@
 						}
 					}
 				} else if (touch.button2) {
-					sheet.move(x - pointer.x, y - pointer.y);
+					// sheet.move(x - pointer.x, y - pointer.y);
 				} else if (touch.button0) {
 					updateStroke(e);
 				}

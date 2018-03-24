@@ -5,9 +5,12 @@
 		const Bezier = app.rainbow.Bezier;
 
 		let pointer = { x: 0, y: 0 };
-		let evCache = [];
 		let points = [];
-		let touch = {};
+		let btn = {};
+
+		// Touch screen stuff
+		let evCache = [];
+		let isDrawing = false;
 
 		const calculateCurveControlPoints = function(s1, s2, s3) {
 			const dx1 = s1.x - s2.x;
@@ -76,7 +79,7 @@
 							let [prevEvent] = evCache.filter(ev => ev.pointerId === e.pointerId);
 							sheet.move(e.pageX - prevEvent.pageX, e.pageY - prevEvent.pageY);
 						}
-					} else if (evCache.length === 1) {
+					} else if (isDrawing) {
 						updateStroke(e);
 					}
 					for (let i = 0; i < evCache.length; i++) {
@@ -85,9 +88,9 @@
 							break;
 						}
 					}
-				} else if (touch.button2) {
-					// sheet.move(x - pointer.x, y - pointer.y);
-				} else if (touch.button0) {
+				} else if (btn.button2) {
+					sheet.move(x - pointer.x, y - pointer.y);
+				} else if (btn.button0) {
 					updateStroke(e);
 				}
 			}
@@ -98,13 +101,14 @@
 		sheet.container.addEventListener('pointerdown', e => {
 			if (e.pointerType === 'touch') {
 				evCache.push(e);
-				if (e.isPrimary) {
+				isDrawing = evCache.length === 1;
+				if (isDrawing) {
 					points = [];
 					updateStroke(e);
 				}
 			} else {
-				touch[`button${e.button}`] = true;
-				if (touch.button0) {
+				btn[`button${e.button}`] = true;
+				if (btn.button0) {
 					points = [];
 					updateStroke(e);
 				}
@@ -120,7 +124,7 @@
 					}
 				}
 			} else {
-				touch = {};
+				btn = {};
 			}
 		});
 

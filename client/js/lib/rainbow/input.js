@@ -113,7 +113,7 @@
 			}
 		});
 
-		sheet.container.addEventListener('pointerup', e => {
+		const pointerup = e => {
 			if (e.pointerType === 'touch') {
 				for (let i = 0; i < evCache.length; i++) {
 					if (evCache[i].pointerId === e.pointerId) {
@@ -124,7 +124,10 @@
 			} else {
 				btn = {};
 			}
-		});
+		};
+
+		sheet.container.addEventListener('pointerup', pointerup);
+		sheet.container.addEventListener('pointercancel', pointerup);
 
 		sheet.container.oncontextmenu = e => e.preventDefault();
 	};

@@ -69,7 +69,8 @@
 			const x = e.pageX - sheet.container.offsetLeft;
 			const y = e.pageY - sheet.container.offsetTop;
 			if (e.pressure > 0) {
-				if (touch.button2) {
+				let isTouch = e.pointerType === 'touch';
+				if ((isTouch && !e.isPrimary) || touch.button2) {
 					sheet.move(x - pointer.x, y - pointer.y);
 				} else if (touch.button0) {
 					updateStroke(e);

@@ -74,11 +74,9 @@
 			const y = e.pageY - sheet.container.offsetTop;
 			if (e.pressure > 0) {
 				if (e.pointerType === 'touch') {
-					if (evCache.length === 2) {
-						if (e.isPrimary) {
-							let [prevEvent] = evCache.filter(ev => ev.pointerId === e.pointerId);
-							sheet.move(e.pageX - prevEvent.pageX, e.pageY - prevEvent.pageY);
-						}
+					if (evCache.length === 2 && e.isPrimary) {
+						let [prevEvent] = evCache.filter(ev => ev.pointerId === e.pointerId);
+						sheet.move(e.pageX - prevEvent.pageX, e.pageY - prevEvent.pageY);
 					} else if (isDrawing) {
 						updateStroke(e);
 					}

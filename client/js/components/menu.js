@@ -2,7 +2,7 @@
 	'use strict';
 
 	app.cmp.Menu = {
-		title: 'Rainbow Scratchpad Test 1',
+		title: 'Rainbow Scratchpad',
 		view() {
 			return m('header', [
 				m('div.header-wrapper', [

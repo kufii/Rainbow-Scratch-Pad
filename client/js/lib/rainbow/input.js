@@ -74,7 +74,7 @@
 					if (evCache.length === 2) {
 						if (e.isPrimary) {
 							let [prevEvent] = evCache.filter(ev => ev.pointerId === e.pointerId);
-							sheet.move(e.pageX - prevEvent.pageY, e.pageY - prevEvent.pageY);
+							sheet.move(e.pageX - prevEvent.pageX, e.pageY - prevEvent.pageY);
 						}
 					} else if (evCache.length === 1) {
 						updateStroke(e);

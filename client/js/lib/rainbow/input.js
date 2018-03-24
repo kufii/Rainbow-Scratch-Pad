@@ -5,6 +5,7 @@
 		const Bezier = app.rainbow.Bezier;
 
 		let pointer = { x: 0, y: 0 };
+		let evCache = [];
 		let points = [];
 		let touch = {};
 
@@ -69,8 +70,22 @@
 			const x = e.pageX - sheet.container.offsetLeft;
 			const y = e.pageY - sheet.container.offsetTop;
 			if (e.pressure > 0) {
-				let isTouch = e.pointerType === 'touch';
-				if ((isTouch && !e.isPrimary) || touch.button2) {
+				if (e.pointerType === 'touch') {
+					if (evCache.length === 2) {
+						if (e.isPrimary) {
+							let [prevEvent] = evCache.filter(ev => ev.pointerId === e.pointerId);
+							sheet.move(e.pageX - prevEvent.pageY, e.pageY - prevEvent.pageY);
+						}
+					} else if (evCache.length === 1) {
+						updateStroke(e);
+					}
+					for (let i = 0; i < evCache.length; i++) {
+						if (evCache[i].pointerId === e.pointerId) {
+							evCache[i] = e;
+							break;
+						}
+					}
+				} else if (touch.button2) {
 					sheet.move(x - pointer.x, y - pointer.y);
 				} else if (touch.button0) {
 					updateStroke(e);
@@ -81,14 +96,33 @@
 		});
 
 		sheet.container.addEventListener('pointerdown', e => {
-			touch[`button${e.button}`] = true;
-			if (touch.button0) {
-				points = [];
-				updateStroke(e);
+			if (e.pointerType === 'touch') {
+				evCache.push(e);
+				if (e.isPrimary) {
+					points = [];
+					updateStroke(e);
+				}
+			} else {
+				touch[`button${e.button}`] = true;
+				if (touch.button0) {
+					points = [];
+					updateStroke(e);
+				}
 			}
 		});
 
-		sheet.container.addEventListener('pointerup', () => touch = {});
+		sheet.container.addEventListener('pointerup', e => {
+			if (e.pointerType === 'touch') {
+				for (let i = 0; i < evCache.length; i++) {
+					if (evCache[i].pointerId === e.pointerId) {
+						evCache.splice(i, 1);
+						break;
+					}
+				}
+			} else {
+				touch = {};
+			}
+		});
 
 		sheet.container.oncontextmenu = e => e.preventDefault();
 	};

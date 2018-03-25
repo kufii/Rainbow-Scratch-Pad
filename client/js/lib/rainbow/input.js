@@ -98,6 +98,7 @@
 
 		sheet.container.addEventListener('pointerdown', e => {
 			if (e.pointerType === 'touch') {
+				if (e.isPrimary) evCache = [];
 				evCache.push(e);
 				isDrawing = evCache.length === 1;
 				if (isDrawing) {

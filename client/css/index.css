@@ -37,9 +37,6 @@ header {
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
 	background-color: #ad1457;
 	color: white;
-}
-
-.header-wrapper {
 	display: flex;
 	flex-direction: row;
 }
@@ -50,36 +47,36 @@ header {
 	margin-left: 72px;
 }
 
-.header-wrapper i {
+header .material-icons {
 	height: 64px;
 	line-height: 64px;
 	font-size: 24px;
 }
 
-.header-wrapper ul {
+header ul {
 	display: flex;
 	flex-direction: row;
 	margin: 0;
 }
 
-.header-wrapper ul.right {
+header ul.right {
 	margin-left: auto;
 }
 
-.header-wrapper ul li {
+header ul li {
 	transition: background-color 0.3s;
 	padding: 0 15px;
 	font-size: 1rem;
 	cursor: pointer;
 }
 
-.header-wrapper ul li:hover {
+header ul li:hover {
 	background-color: #9e124f;
 }
 
 /* Sheet */
 
-.sheet-container {
+.sheet {
 	background-color: lightgray;
 	overflow: hidden;
 	height: 100%;
@@ -87,7 +84,7 @@ header {
 	cursor: crosshair;
 }
 
-.container canvas {
+.sheet canvas {
 	position: absolute;
 }
 

@@ -13,7 +13,7 @@
 			);
 		},
 		view() {
-			return m('div.sheet-container[touch-action=none]', [
+			return m('div.sheet[touch-action=none]', [
 				m('canvas#background'),
 				m('canvas#main'),
 				m('canvas#ui')

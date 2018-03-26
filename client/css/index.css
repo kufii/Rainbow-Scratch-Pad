@@ -8,6 +8,15 @@
 	touch-action: none;
 }
 
+.no-select {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
 ul {
 	padding-left: 0;
 	list-style-type: none;

@@ -13,7 +13,7 @@
 			);
 		},
 		view() {
-			return m('div.sheet[touch-action=none]', [
+			return m('div.sheet.no-select[touch-action=none]', [
 				m('canvas#background'),
 				m('canvas#main'),
 				m('canvas#ui')

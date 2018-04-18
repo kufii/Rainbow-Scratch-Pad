@@ -1,5 +1,5 @@
 {
-	"name": "Rainbow Scratch Pad",
+	"name": "rainbow-scratch-pad",
 	"version": "1.0.0",
 	"description": "A rainbow scratch paper simulator for the web",
 	"main": "server.js",

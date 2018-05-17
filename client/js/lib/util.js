@@ -54,9 +54,9 @@
 	app.mutil = {
 		requestWithLoader(obj) {
 			let loaders = util.qq('.loader');
-			loaders.forEach(loader => loader.removeAttribute('hidden'));
+			loaders.forEach(loader => loader.hidden = false);
 			return m.request(obj).then(data => {
-				loaders.forEach(loader => loader.setAttribute('hidden', ''));
+				loaders.forEach(loader => loader.hidden = true);
 				return data;
 			});
 		},

@@ -53,7 +53,7 @@
 			let rgba = hexToRgbA(hex);
 			if (!rgba) return null;
 			for (let i = 0; i < 3; i++) {
-				rgba[i] = rgba[i] / 255;
+				rgba[i] /= 255;
 			}
 			return rgba;
 		};

@@ -1,6 +1,7 @@
 'use strict';
 
 const express = require('express');
+const livereload = require('livereload');
 const app = express();
 
 const ENV = process.env.NODE_ENV || 'development';
@@ -9,7 +10,6 @@ const clientDir = `${__dirname}/client`;
 // setup reload server
 if (ENV === 'development') {
 	console.log('DEV: starting livereload');
-	const livereload = require('livereload');
 	const reloadServer = livereload.createServer();
 	reloadServer.watch(clientDir);
 }

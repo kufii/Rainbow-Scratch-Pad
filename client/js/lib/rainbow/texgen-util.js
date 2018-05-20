@@ -50,7 +50,7 @@
 		};
 
 		const getColorFromHex = function(hex) {
-			let rgba = hexToRgbA(hex);
+			const rgba = hexToRgbA(hex);
 			if (!rgba) return null;
 			for (let i = 0; i < 3; i++) {
 				rgba[i] /= 255;
@@ -59,7 +59,7 @@
 		};
 
 		const getColorFromName = function(color) {
-			let hex = colorNameToHex(color);
+			const hex = colorNameToHex(color);
 			if (!hex) return null;
 			return getColorFromHex(hex);
 		};
@@ -75,17 +75,17 @@
 		const getGradient = function(colors, interpolation = 2) {
 			if (!colors || colors.length === 0) return null;
 
-			let gradient = new TG.LinearGradient().interpolation(interpolation);
+			const gradient = new TG.LinearGradient().interpolation(interpolation);
 			// Start the gradient at a random color for more variety
-			let startColor = util.random(colors.length - 1);
+			const startColor = util.random(colors.length - 1);
 			let distanceBetween = 0;
 			if (colors.length > 1) {
 				distanceBetween = 1 / (colors.length - 1);
 			}
 
 			for (let i = 0; i < colors.length; i++) {
-				let index = (startColor + i) % colors.length;
-				let stop = i > 0 ? (i * distanceBetween) - (distanceBetween / 2) : 0;
+				const index = (startColor + i) % colors.length;
+				const stop = i > 0 ? (i * distanceBetween) - (distanceBetween / 2) : 0;
 				gradient.point(stop, getColor(colors[index]));
 			}
 			// Make the last color in the gradient the same as the first color so that it loops nicely

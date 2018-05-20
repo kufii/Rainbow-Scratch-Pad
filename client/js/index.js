@@ -7,9 +7,9 @@
 
 	// mounts app
 	app.mountRoot = function() {
-		let cmp = app.cmp;
+		const cmp = app.cmp;
 
-		let mountElem = util.q('#app');
+		const mountElem = util.q('#app');
 
 		// define application routes here
 		m.mount(mountElem, cmp.Main);

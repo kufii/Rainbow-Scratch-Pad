@@ -34,7 +34,7 @@
 				document.cookie = `${key}=${value};expires=${expiry}`;
 			},
 			get(key) {
-				let [found] = document.cookie.split('; ').filter(cookie => cookie.split('=')[0] === key);
+				const [found] = document.cookie.split('; ').filter(cookie => cookie.split('=')[0] === key);
 				if (found) return found.split('=')[1];
 			},
 			remove(key) {
@@ -43,7 +43,7 @@
 		},
 		loadImg(src) {
 			return new Promise((resolve, reject) => {
-				let img = new Image();
+				const img = new Image();
 				img.onload = () => resolve(img);
 				img.onerror = () => reject(new Error('img not found'));
 				img.src = src;
@@ -53,7 +53,7 @@
 
 	app.mutil = {
 		requestWithLoader(obj) {
-			let loaders = util.qq('.loader');
+			const loaders = util.qq('.loader');
 			loaders.forEach(loader => loader.hidden = false);
 			return m.request(obj).then(data => {
 				loaders.forEach(loader => loader.hidden = true);

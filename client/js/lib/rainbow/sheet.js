@@ -5,7 +5,7 @@
 		const ctx = canvas.getContext('2d');
 		const bgctx = bgCanvas.getContext('2d');
 
-		let sheet = {
+		const sheet = {
 			color: 'black',
 			penSize: 8,
 			get x() {
@@ -58,13 +58,13 @@
 		};
 
 		const drawBackground = function() {
-			let scale = util.randomFloat(sheet.bg.scale.min, sheet.bg.scale.max);
-			let angle = util.randomFloat(360);
+			const scale = util.randomFloat(sheet.bg.scale.min, sheet.bg.scale.max);
+			const angle = util.randomFloat(360);
 
-			let radius = Math.min(sheet.width, sheet.height) / 2;
-			let x = util.randomFloat(radius, sheet.width - radius);
-			let y = util.randomFloat(radius, sheet.height - radius);
-			let strength = util.randomFloat(sheet.bg.twistStrength.min, sheet.bg.twistStrength.max);
+			const radius = Math.min(sheet.width, sheet.height) / 2;
+			const x = util.randomFloat(radius, sheet.width - radius);
+			const y = util.randomFloat(radius, sheet.height - radius);
+			const strength = util.randomFloat(sheet.bg.twistStrength.min, sheet.bg.twistStrength.max);
 
 			new TG.Texture(sheet.width, sheet.height)
 				.add(app.rainbow.TGUtil.getGradient(sheet.bg.colors))
@@ -119,7 +119,7 @@
 		};
 
 		const importJSON = function(json) {
-			let obj = JSON.parse(json);
+			const obj = JSON.parse(json);
 			sheet.width = obj.width;
 			sheet.height = obj.height;
 			center();
@@ -134,8 +134,8 @@
 		};
 
 		const exportImg = function(type = 'image/png', quality) {
-			let tmpCanvas = document.createElement('canvas');
-			let tmpCtx = tmpCanvas.getContext('2d');
+			const tmpCanvas = document.createElement('canvas');
+			const tmpCtx = tmpCanvas.getContext('2d');
 			tmpCanvas.width = sheet.width;
 			tmpCanvas.height = sheet.height;
 			tmpCtx.drawImage(bgCanvas, 0, 0);

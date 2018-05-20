@@ -4,7 +4,7 @@
 	app.rainbow.Input = function(sheet) {
 		const Bezier = app.rainbow.Bezier;
 
-		let pointer = { x: 0, y: 0 };
+		const pointer = { x: 0, y: 0 };
 		let points = [];
 		let btn = {};
 
@@ -75,7 +75,7 @@
 			if (e.pressure > 0) {
 				if (e.pointerType === 'touch') {
 					if (evCache.length === 2 && e.isPrimary) {
-						let [prevEvent] = evCache.filter(ev => ev.pointerId === e.pointerId);
+						const [prevEvent] = evCache.filter(ev => ev.pointerId === e.pointerId);
 						sheet.move(e.pageX - prevEvent.pageX, e.pageY - prevEvent.pageY);
 					} else if (isDrawing) {
 						updateStroke(e);

@@ -1,10 +1,10 @@
 (() => {
 	'use strict';
 
-	let app = window.app = window.app || {};
+	const app = window.app = window.app || {};
 
 	const addScript = function(src, cb, err) {
-		let script = document.createElement('script');
+		const script = document.createElement('script');
 		script.onload = cb;
 		script.onerror = err;
 		script.src = src;
@@ -26,7 +26,7 @@
 
 		Object.entries(deps).forEach(([key, value]) => {
 			value.forEach(file => {
-				let src = `${key + file}.js`;
+				const src = `${key + file}.js`;
 				console.log(++loading, src);
 				addScript(src, load, error);
 			});

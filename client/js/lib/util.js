@@ -75,6 +75,11 @@
 		},
 		icon(name, children) {
 			return m('i.material-icons', name, children);
+		},
+		nestedVnode(def, ...args) {
+			const elems = def.split('>');
+			return m(elems.shift().trim(), ...(elems.length ? [app.mutil.nestedVnode(elems.join('>'), ...args)] : args));
 		}
 	};
+	window.mn = app.mutil.nestedVnode; // Shorthand alias
 })();

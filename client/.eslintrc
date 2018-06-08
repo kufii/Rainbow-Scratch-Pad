@@ -8,6 +8,7 @@
 		"app": true,
 		"util": true,
 		"m": true,
+		"mn": true,
 		"TG": true
 	}
 }

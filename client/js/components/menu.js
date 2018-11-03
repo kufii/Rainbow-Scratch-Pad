@@ -1,16 +1,11 @@
-(() => {
-	'use strict';
+import { icon } from '../lib/mutil.js';
 
-	app.cmp.Menu = {
-		title: 'Rainbow Scratchpad',
-		view() {
-			return m('header', [
-				m('span.header-title', this.title),
-				m('ul.right', [
-					mn('li > a[title="Save"]', app.mutil.icon('save')),
-					mn('li > a[title="More"]', app.mutil.icon('more_vert'))
-				])
-			]);
-		}
-	};
-})();
+export const Menu = {
+	view: () => m('header', [
+		m('span.header-title', 'Rainbow Scratchpad'),
+		m('ul.right', [
+			mn('li > a[title="Save"]', icon('save')),
+			mn('li > a[title="More"]', icon('more_vert'))
+		])
+	])
+};

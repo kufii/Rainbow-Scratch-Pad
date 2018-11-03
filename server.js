@@ -1,5 +1,3 @@
-'use strict';
-
 const express = require('express');
 const livereload = require('livereload');
 const app = express();

@@ -1,12 +1,9 @@
-(() => {
-	'use strict';
+import { Menu } from './menu.js';
+import { ScratchPad } from './scratch-pad.js';
 
-	app.cmp.Main = {
-		view() {
-			return m('div.container', [
-				m(app.cmp.Menu),
-				m(app.cmp.ScratchPad)
-			]);
-		}
-	};
-})();
+export const Main = {
+	view: () => m('div.container', [
+		m(Menu),
+		m(ScratchPad)
+	])
+};
